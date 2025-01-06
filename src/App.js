@@ -1,29 +1,28 @@
-const arr = [1, 2, 3];
-const arr1 = [];
-const text = "";
+const arr = ["1번", "2번", "3번", "3번"];
+const arr2 = [];
+for (let i = 0; i < arr.length; i++) {
+  arr2.push(<h4 key={i}>{arr[i]}</h4>);
+  // = [<h4>1번</h4>, <h4>2번</h4>, <h4>3번</h4>, <h4>3번</h4>]
+}
 
 export default function App() {
   return (
     <div>
-      <h1>삼항연산자</h1>
+      <h1>배열로 넣기</h1>
       <ol>
-        <li>{1 + 1 === 2 ? "참입니다." : "거짓입니다."}</li>
-        <li>{1 + 1 === 3 ? "참입니다." : "거짓입니다."}</li>
+        <li>{arr}</li>
+        <li>{arr2}</li>
       </ol>
 
-      <h1>AND 연산자</h1>
-      <ol>
-        <li>{1 + 1 === 2 && "AND 연산자1"}</li>
-        <li>{1 + 1 !== 2 && "AND 연산자1"}</li>
-        <li>{arr.length && "AND 연산자2"}</li>
-        <li>{arr1.length && "AND 연산자2"}</li>
-        <li>{!!arr1.length && "AND 연산자2"}</li>
-      </ol>
+      <hr />
 
-      <h1>OR 연산자</h1>
+      <h1>Array.map</h1>
       <ol>
-        <li>{1 + 1 !== 2 || "OR 연산자1"}</li>
-        <li>{text || "OR 연산자2"}</li>
+        <li>
+          {arr.map((item, index) => {
+            return <h4 key={`${item}-${index}`}>{item}</h4>;
+          })}
+        </li>
       </ol>
     </div>
   );
