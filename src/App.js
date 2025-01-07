@@ -1,52 +1,36 @@
-/* 
-  - value를 state로 만들기
-  - Increase 버튼 함수 만들기 (+함수형 인자로)
-  - Reset 버튼 함수 만들기
-*/
-import { useState } from "react";
+import React, { Component } from "react";
 
-export default function App() {
-  let value = 0;
-  const [newValue, setNewValue] = useState(0);
+export default class App extends Component {
+  state = {
+    value: 0,
+  };
 
-  return (
-    <div>
-      {/* 1. state 사용 X */}
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 1,
+    };
+  }
+
+  resetValue() {
+    this.setState({ value: 0 });
+  }
+
+  render() {
+    return (
       <div>
-        <div>value: {value}</div>
+        <h1>value: {this.state.value}</h1>
         <button
-          type="button"
           onClick={() => {
-            console.log("increase1", value);
-            value = value + 1;
-            console.log("increase2", value);
+            this.setState((state) => ({
+              value: state.value + 1,
+            }));
           }}
         >
           Increase Button
         </button>
-        <button type="button">Reset Button</button>
+        <button onClick={this.resetValue.bind(this)}>Reset Button</button>
       </div>
-      <div>
-        <div>newValue: {newValue}</div>
-        <button
-          type="button"
-          onClick={() => {
-            console.log("increase1", newValue);
-            setNewValue(newValue + 1);
-            console.log("increase2", newValue);
-          }}
-        >
-          Increase Button
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setNewValue(0);
-          }}
-        >
-          Reset Button
-        </button>
-      </div>
-    </div>
-  );
+    );
+  }
 }
