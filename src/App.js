@@ -19,10 +19,26 @@ export default function App() {
     },
   ]);
 
+  const [selectedMemoIndex, setSelectedMemoIndex] = useState(0);
+
+  function setMemo(newMemo) {
+    // memos[selectedMemoIndex] = newMemo; // memos[0]이 newMemo로 교체된다.
+    // console.log("memos", memos);
+    // setMemos([...memos]);
+
+    const newMemos = [...memos];
+    newMemos[selectedMemoIndex] = newMemo;
+    setMemos(newMemos);
+  }
+
   return (
     <div className="App">
-      <Sidebar memos={memos} />
-      <MemoContainer />
+      <Sidebar
+        memos={memos}
+        selectedMemoIndex={selectedMemoIndex}
+        setSelectedMemoIndex={setSelectedMemoIndex}
+      />
+      <MemoContainer memo={memos[selectedMemoIndex]} setMemo={setMemo} />
     </div>
   );
 }

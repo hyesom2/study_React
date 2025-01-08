@@ -1,11 +1,23 @@
-export default function MemoList({ memos }) {
+import MemoItem from "./MemoItem";
+
+export default function MemoList({
+  memos,
+  selectedMemoIndex,
+  setSelectedMemoIndex,
+}) {
   return (
-    <div>
-      <ul>
-        {memos.map((memo, index) => {
-          return <li key={index}>{memo.title}</li>;
-        })}
-      </ul>
-    </div>
+    <ul>
+      {memos.map((memo, index) => (
+        <MemoItem
+          key={index}
+          index={index}
+          setSelectedMemoIndex={setSelectedMemoIndex}
+          onClick={() => setSelectedMemoIndex(index)}
+          isSelected={index === selectedMemoIndex}
+        >
+          {memo.title}
+        </MemoItem>
+      ))}
+    </ul>
   );
 }
