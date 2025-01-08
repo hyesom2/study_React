@@ -1,17 +1,28 @@
-import TextInput from "./components/TextInput";
-import TextArea from "./components/TextArea";
-import Select from "./components/Select";
-import Checkbox from "./components/CheckBox";
-import UnControlledTextInput from "./components/UnControlledTextInput";
+import { useState } from "react";
+import "./App.css";
+import Sidebar from "./components/Sidebar";
+import MemoContainer from "./components/MemoContainer";
 
 export default function App() {
+  const [memos, setMemos] = useState([
+    {
+      title: "memo1",
+      content: "this is memo1",
+      createdTime: "1736305630047", // 생성된 시간 new Date().getTime();
+      updatedTime: "1736305630047", // 변경된 시간
+    },
+    {
+      title: "memo2",
+      content: "this is memo2",
+      createdTime: "1836305630047", // 생성된 시간 new Date().getTime();
+      updatedTime: "1836305630047", // 변경된 시간
+    },
+  ]);
+
   return (
     <div className="App">
-      <TextInput />
-      <TextArea />
-      <Select />
-      <Checkbox />
-      <UnControlledTextInput />
+      <Sidebar memos={memos} />
+      <MemoContainer />
     </div>
   );
 }
