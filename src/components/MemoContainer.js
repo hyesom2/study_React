@@ -1,4 +1,13 @@
 export default function MemoContainer({ memo, setMemo }) {
+  if (memo === undefined) {
+    return (
+      <div>
+        <h1>메모가 없습니다.</h1>
+        <p>새로운 메모를 추가해주세요.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="MemoContainer">
       <div>

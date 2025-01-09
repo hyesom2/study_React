@@ -47,15 +47,34 @@
 }
 
 .MemoItem {
+  position: relative;
   width: 100%;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   padding: 0.25rem 0.5rem;
+  cursor: pointer;
 }
-.MemoItem:hover,
 .MemoItem.selected {
   background-color: rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+}
+.MemoItem__delete-button {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  width: 20px;
+  height: 20px;
+  font-size: 1.2rem;
   cursor: pointer;
+}
+.MemoItem:hover .MemoItem__delete-button {
+  display: flex;
   font-weight: 700;
 }

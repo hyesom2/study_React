@@ -4,6 +4,7 @@ export default function MemoList({
   memos,
   selectedMemoIndex,
   setSelectedMemoIndex,
+  deleteMemo,
 }) {
   return (
     <ul>
@@ -11,9 +12,14 @@ export default function MemoList({
         <MemoItem
           key={index}
           index={index}
-          setSelectedMemoIndex={setSelectedMemoIndex}
-          onClick={() => setSelectedMemoIndex(index)}
+          // setSelectedMemoIndex={setSelectedMemoIndex}
           isSelected={index === selectedMemoIndex}
+          onClickAddMemo={() => setSelectedMemoIndex(index)}
+          onClickDeleteMemo={(e) => {
+            deleteMemo(index);
+            e.preventDefault();
+            e.stopPropagation();
+          }}
         >
           {memo.title}
         </MemoItem>

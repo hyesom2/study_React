@@ -7,6 +7,7 @@ export default function Sidebar({
   selectedMemoIndex,
   setSelectedMemoIndex,
   addMemo,
+  deleteMemo,
 }) {
   return (
     <div className="Sidebar">
@@ -15,6 +16,7 @@ export default function Sidebar({
         memos={memos}
         selectedMemoIndex={selectedMemoIndex}
         setSelectedMemoIndex={setSelectedMemoIndex}
+        deleteMemo={deleteMemo}
       />
       <SidebarFooter onClick={addMemo} />
     </div>
