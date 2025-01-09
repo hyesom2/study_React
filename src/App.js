@@ -31,12 +31,28 @@ export default function App() {
     setMemos(newMemos);
   }
 
+  function addMemo() {
+    const time = new Date().getTime();
+
+    setMemos([
+      ...memos,
+      {
+        title: "Untitled",
+        content: "",
+        createdTime: time,
+        updatedTime: time,
+      },
+    ]);
+    setSelectedMemoIndex(memos.length);
+  }
+
   return (
     <div className="App">
       <Sidebar
         memos={memos}
         selectedMemoIndex={selectedMemoIndex}
         setSelectedMemoIndex={setSelectedMemoIndex}
+        addMemo={addMemo}
       />
       <MemoContainer memo={memos[selectedMemoIndex]} setMemo={setMemo} />
     </div>

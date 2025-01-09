@@ -1,3 +1,13 @@
-export default function SidebarFooter() {
-  return <div className="SidebarFooter">SidebarFooter</div>;
+export default function SidebarFooter({ onClick }) {
+  return (
+    <div className="SidebarFooter">
+      <button
+        type="button"
+        className="SidebarFooter__add-button"
+        onClick={onClick}
+      >
+        +
+      </button>
+    </div>
+  );
 }
